@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+ble-agent/WordScan.app/
+ble-agent/wordscan
+*.log

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>local.tokenbridge</string>
+<key>ProgramArguments</key><array>
+<string>/usr/bin/env</string><string>python3</string><string>/Users/YOU/youdao-wordcard-eink/bridge.py</string>
+</array>
+<key>WorkingDirectory</key><string>/Users/YOU/youdao-wordcard-eink</string>
+<key>EnvironmentVariables</key><dict>
+<key>WORDCARD_TARGET_UUID</key><string>替换为你的设备 UUID</string>
+<key>TOKEN_DISPLAY_INTERVAL</key><string>20</string>
+</dict>
+<key>RunAtLoad</key><true/><key>KeepAlive</key><true/>
+<key>StandardOutPath</key><string>/tmp/tokenbridge.out</string>
+<key>StandardErrorPath</key><string>/tmp/tokenbridge.out</string>
+</dict></plist>
