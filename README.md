@@ -12,10 +12,10 @@
 ## 架构
 
 ```
-~/.zcode/cli/rollout/model-io-session_*.jsonl   (模型请求 usage 流水)
-        │  meter.py   增量解析, 2s 轮询
+llm-usage 服务 (LaunchAgent com.jh.llm-usage)
+        │  智谱/Kimi/小米额度 + Zcode 7/30 天用量
         ▼
-/tmp/tokenmeter.json  +  http://127.0.0.1:8787  (网页面板 / JSON)
+http://127.0.0.1:8787/quota.json  (网页面板 / JSON)
         │  bridge.py  渲染 296×152 JPEG + RCSP 认证 + 文件传输
         ▼
 /tmp/wordscan.write (hex 帧)  ──►  ble-agent (Swift/CoreBluetooth, launchd)
@@ -28,8 +28,8 @@
 
 | 组件 | 说明 |
 |---|---|
-| `meter.py` | token 统计守护进程（数据源可替换成任何 JSON 统计） |
-| `bridge.py` | 认证、RCSP 传输状态机、图片渲染与定时推送 |
+| `llm-usage`（独立服务, 见 `~/.agents/skills/llm-usage`） | 智谱/Kimi/小米额度 + Zcode 用量, `GET /quota.json` |
+| `bridge.py` | 认证、RCSP 传输状态机、从 /quota.json 渲染面板并定时推送 |
 | `ble-agent/agent.swift` | CoreBluetooth 代理：扫描/连接/收发，通过文件接口受控 |
 | `auth/` | 杰理认证加密（源自开源逆向项目的表 + 实现，MIT） |
 | `docs/protocol.md` | 协议逆向全记录（帧格式、认证、传输状态机、坑） |
